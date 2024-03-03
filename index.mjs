@@ -1,11 +1,11 @@
+await (async () => await import("dotenv/config"))();
+
 import http from "http";
 import OpenAI from "openai";
 
-const OPENAI_API_KEY = "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";
-
-const openai = new OpenAI({ apiKey: OPENAI_API_KEY });
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 const prompt =
-  "Generate a JSON structure for web forms (array of forms). Each form should have multiple rows. Include a variety of component types such as TextField, RadioGroup, Checkbox, Switch, Slider, and Select. Each row should atleast have a field componentType and label and placeholder (for TextField). Adjust properties, labels, and options to introduce diversity. There should be at least 4 forms, and each form should have at least 6 rows. show only the json fsuch that its cane be put as is in a json.parse() call";
+  "Generate a JSON structure for web forms (array of forms). Each form should have multiple rows. Include a variety of component types such as TextField, RadioGroup, Checkbox, Switch, Slider, and Select. Each row should at least have a field componentType and label and placeholder (for TextField). Adjust properties, labels, and options to introduce diversity. There should be at least 4 forms, and each form should have at least 6 rows. show only the json such that it can be put as is in a json.parse() call";
 
 http
   .createServer(async (req, res) => {
